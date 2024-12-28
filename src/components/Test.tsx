@@ -1,4 +1,4 @@
-import { createUser } from "../remote/firebase/repository/UserRepository";
+import { checkSignUp } from "../remote/firebase/repository/UserRepository";
 import { useState } from "react";
 
 import { useSetRecoilState } from "recoil";
@@ -7,13 +7,15 @@ import userState from "../state/UserState";
 function Test() {
   const [id, setId] = useState("");
   const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
 
   const setUser = useSetRecoilState(userState);
 
   const generateUser = () => {
-    createUser({
+    checkSignUp({
       id: id,
       nickname: nickname,
+      email: email,
     });
   };
 
@@ -21,6 +23,7 @@ function Test() {
     setUser({
       id,
       nickname,
+      email,
     });
     alert("Recoil 상태 갱신 완료");
   };
@@ -33,6 +36,10 @@ function Test() {
     setNickname(event.currentTarget.value);
   };
 
+  const updateEmail = (event: React.FormEvent<HTMLInputElement>) => {
+    setEmail(event.currentTarget.value);
+  };
+
   return (
     <div>
       <div>
@@ -41,6 +48,10 @@ function Test() {
       <div>
         <p>Nickname</p>
         <input onChange={updateNickname} type="text" name="name" />
+      </div>
+      <div>
+        <p>Email</p>
+        <input onChange={updateEmail} type="text" name="name" />
       </div>
       <button onClick={generateUser}>생성</button>
       <button onClick={setSession}>로그인</button>

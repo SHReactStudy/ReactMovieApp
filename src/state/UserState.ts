@@ -7,6 +7,7 @@ const userState = atom<User>({
   default: {
     id: "",
     nickname: "",
+    email: "",
   },
 });
 
