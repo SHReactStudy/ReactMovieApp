@@ -14,7 +14,7 @@ const LANGUAGE = "ko-kr";
 const REGION = "840";
 
 export class MovieDataSourceImpl implements MovieDataSource {
-  async getMovieResponseOrderedByPopular(
+  async getMovieResponseOrderByPopularity(
     pageId: number
   ): Promise<DataResult<MovieResponse>> {
     try {
