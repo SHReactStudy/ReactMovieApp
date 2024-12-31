@@ -1,8 +1,8 @@
-import { checkSignUp } from "../remote/firebase/repository/UserRepository";
+import { checkSignUp } from "../../domain/repository/UserRepository";
 import { useState } from "react";
 
 import { useSetRecoilState } from "recoil";
-import userState from "../state/UserState";
+import userState from "../../adapters/recoilStates/UserState";
 
 function Test() {
   const [id, setId] = useState("");

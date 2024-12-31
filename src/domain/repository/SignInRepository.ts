@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import User from "../model/User";
-import auth from "../FirebaseAuth";
+import User from "../model/user/User";
+import auth from "../../data/firebase/FirebaseAuth";
 
 function googleLogin() {
   return new Promise<User>((resolve, reject) => {

@@ -1,4 +1,4 @@
-import User from "../remote/firebase/model/User";
+import User from "../../domain/model/user/User";
 
 import { atom } from "recoil";
 
