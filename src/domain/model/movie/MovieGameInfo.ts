@@ -1,4 +1,4 @@
-export default interface Movie {
+interface MovieGameInfo {
   rank: number;
   backdropImgUrl: string;
   posterImgUrl: string;
@@ -6,3 +6,5 @@ export default interface Movie {
   name: string;
   releaseDate: string;
 }
+
+export type { MovieGameInfo };

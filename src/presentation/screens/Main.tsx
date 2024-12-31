@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-import userState from "../state/UserState";
+import userState from "../../adapters/recoilStates//UserState";
 import { useRecoilState } from "recoil";
 
-import { checkSignUp } from "../remote/firebase/repository/UserRepository";
-import { googleLogin } from "../remote/firebase/repository/SignInRepository";
+import { checkSignUp } from "../../domain/repository/UserRepository";
+import { googleLogin } from "../../domain/repository/SignInRepository";
 
 function Main() {
   const navigate = useNavigate();

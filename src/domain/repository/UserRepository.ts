@@ -1,6 +1,6 @@
-import User from "../model/User";
+import User from "../model/user/User";
 import { ref, child, get, set } from "firebase/database";
-import database from "../RealTimeDatabase";
+import database from "../../data/firebase/RealTimeDatabase";
 
 function createUser(userInfo: User) {
   set(ref(database, "users/" + userInfo.id), {

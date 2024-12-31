@@ -1,8 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import "./Carousel.css";
 import { useRecoilValue, useRecoilState } from "recoil";
-import { indexState, movieListState } from "../state/MovieListState";
-import Movie from "../Movie";
+import {
+  indexState,
+  movieListState,
+} from "../../adapters/recoilStates/MovieListState";
+import Movie from "../../domain/model/movie/MovieGameInfo";
 
 const Carousel: React.FC = () => {
   const [index, setIndex] = useRecoilState(indexState);

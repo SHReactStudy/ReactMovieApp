@@ -1,11 +1,11 @@
-export default interface MovieResponse {
+interface MovieResponse {
   page: number;
-  results: MovieOrigin[];
+  results: MovieEntity[];
   total_pages: number;
   total_results: number;
 }
 
-interface MovieOrigin {
+interface MovieEntity {
   adult: boolean;
   backdrop_path: string | null;
   genre_ids: number[];
@@ -22,4 +22,4 @@ interface MovieOrigin {
   vote_count: number;
 }
 
-export type { MovieOrigin };
+export type { MovieEntity, MovieResponse };

@@ -1,7 +1,7 @@
-import Main from "./components/Main";
-import MovieGame from "./components/MovieGame";
-import Memo from "./components/Memo";
-import Test from "./components/Test";
+import Main from "./presentation/screens/Main";
+import MovieGame from "./presentation/screens/MovieGame";
+import Memo from "./presentation/screens/Memo";
+import Test from "./presentation/screens/Test";
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
