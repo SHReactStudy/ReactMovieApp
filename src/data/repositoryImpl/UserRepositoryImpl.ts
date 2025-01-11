@@ -1,4 +1,3 @@
-import { inject, injectable } from "inversify";
 import User from "../../domain/model/user/User";
 import { UserRepository } from "../../domain/repository/UserRepository";
 import Result from "../../domain/Result";
@@ -8,16 +7,11 @@ import {
   mapUserEntityToUser,
   mapUserToUserEntity,
 } from "../mappers/UserMapper";
-import DATASOURCE_TYPES from "../../di/DataSourceIdentifier";
 
-@injectable()
 export class UserRepositoryImpl implements UserRepository {
   private dataSource: UserDataSource;
 
-  public constructor(
-    @inject(DATASOURCE_TYPES.User)
-    dataSource: UserDataSource
-  ) {
+  public constructor(dataSource: UserDataSource) {
     this.dataSource = dataSource;
   }
 

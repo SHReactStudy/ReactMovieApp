@@ -6,14 +6,7 @@ import {
 } from "../../adapters/recoilStates/MovieListState";
 import Carousel from "./../components/Carousel";
 import { MovieGameInfo } from "../../domain/model/movie/MovieGameInfo";
-import { GetPopularMovieGameInfoUseCase } from "../../domain/usecases/GetPopularMovieGameInfoUseCase";
-import container from "../../di/Container";
-import USECASE_TYPEPS from "../../di/UsecaseIdentifier";
-
-const getPopularMovieGameInfoUseCase =
-  container.get<GetPopularMovieGameInfoUseCase>(
-    USECASE_TYPEPS.GetPopularMovieGameInfo
-  );
+import { useDI } from "../../di/useDI";
 
 const MovieGame = () => {
   const [loadingCnt, setLoading] = useState(0);
@@ -28,6 +21,8 @@ const MovieGame = () => {
   useEffect(() => {}, [movieList]);
 
   const page = useRef(1);
+
+  const { getPopularMovieGameInfoUseCase } = useDI();
 
   const fetchMovieData = async () => {
     setLoading(loadingCnt + 1);

@@ -3,16 +3,11 @@ import type { MovieDataSource } from "../../data/datasource/MovieDataSource";
 import { MovieRepository } from "../../domain/repository/MovieRepository";
 import { mapMovieResponseToMovie } from "../../data/mappers/MovieMapper";
 import { MovieEntity } from "../entities/MovieEntity";
-import { inject, injectable } from "inversify";
-import DATASOURCE_TYPES from "../../di/DataSourceIdentifier";
 
-@injectable()
 export class MovieRepositoryImpl implements MovieRepository {
   private dataSource: MovieDataSource;
 
-  public constructor(
-    @inject(DATASOURCE_TYPES.Movie) dataSource: MovieDataSource
-  ) {
+  public constructor(dataSource: MovieDataSource) {
     this.dataSource = dataSource;
   }
 

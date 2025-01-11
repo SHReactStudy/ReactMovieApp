@@ -21,6 +21,10 @@ import { GoogleSignInUseCase } from "../domain/usecases/GoogleSignInUseCase";
 import USECASE_TYPEPS from "./UsecaseIdentifier";
 import { GetPopularMovieGameInfoUseCase } from "../domain/usecases/GetPopularMovieGameInfoUseCase";
 
+/**
+ * @deprecated DI : Context API 사용
+ */
+
 const container = new Container();
 
 // DataSource

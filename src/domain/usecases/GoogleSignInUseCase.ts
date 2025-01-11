@@ -1,18 +1,14 @@
-import { inject, injectable } from "inversify";
-import REPOSITORY_TYPEPS from "../../di/RepositoryIdentifier";
 import User from "../model/user/User";
 import type { GoogleSignInRepository } from "../repository/GoogleSignInRepository";
 import type { UserRepository } from "../repository/UserRepository";
 import Result from "../Result";
 
-@injectable()
 export class GoogleSignInUseCase {
   private userRepository: UserRepository;
   private signInRepository: GoogleSignInRepository;
 
   constructor(
-    @inject(REPOSITORY_TYPEPS.User) userRepository: UserRepository,
-    @inject(REPOSITORY_TYPEPS.GoogleSignIn)
+    userRepository: UserRepository,
     signInRepository: GoogleSignInRepository
   ) {
     this.userRepository = userRepository;
