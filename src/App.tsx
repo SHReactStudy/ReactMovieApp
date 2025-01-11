@@ -4,6 +4,7 @@ import Memo from "./presentation/screens/Memo";
 import Test from "./presentation/screens/Test";
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import InversifyTest from "./presentation/screens/InversifyTest";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/game" element={<MovieGame />} />
         <Route path="/memo" element={<Memo />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/inversifyTest" element={<InversifyTest />} />
       </Routes>
     </BrowserRouter>
   );

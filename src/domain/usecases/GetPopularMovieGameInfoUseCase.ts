@@ -1,10 +1,10 @@
-import { MovieRepository } from "../repository/MovieRepository";
+import type { MovieRepository } from "../repository/MovieRepository";
 import { MovieGameInfo } from "../model/movie/MovieGameInfo";
 
 export class GetPopularMovieGameInfoUseCase {
-  movieRepository: MovieRepository;
+  private movieRepository: MovieRepository;
 
-  constructor(movieRepository: MovieRepository) {
+  public constructor(movieRepository: MovieRepository) {
     this.movieRepository = movieRepository;
   }
 

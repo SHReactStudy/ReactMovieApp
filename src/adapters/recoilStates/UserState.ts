@@ -8,6 +8,7 @@ const userState = atom<User>({
     id: "",
     nickname: "",
     email: "",
+    platform: "",
   },
 });
 
