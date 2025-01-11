@@ -5,8 +5,10 @@ import { ref, child, get, set } from "firebase/database";
 import database from "../../data/firebase/RealTimeDatabase";
 import UserNotExistError from "../exception/UserNotExistError";
 import { call } from "../Call";
+import { injectable } from "inversify";
 
-export class UserDataSourceImpl implements UserDataSource {
+@injectable()
+export default class UserDataSourceImpl implements UserDataSource {
   dbRef = ref(database);
 
   async signUp(user: UserEntity): Promise<DataResult<void>> {
@@ -31,3 +33,5 @@ export class UserDataSourceImpl implements UserDataSource {
     }
   }
 }
+
+export { UserDataSourceImpl };

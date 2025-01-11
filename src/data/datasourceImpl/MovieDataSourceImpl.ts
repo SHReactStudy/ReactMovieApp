@@ -3,6 +3,7 @@ import { MovieResponse } from "../entities/MovieEntity";
 import requestPath from "../api/RequestPath";
 import DataResult from "../DataResult";
 import { MovieDataSource } from "../datasource/MovieDataSource";
+import { injectable } from "inversify";
 
 const API_KEY = "b0ac4ee644bbcafb01decc587dc1d92e";
 const LANGUAGE = "ko-kr";
@@ -13,6 +14,7 @@ const LANGUAGE = "ko-kr";
  */
 const REGION = "840";
 
+@injectable()
 export class MovieDataSourceImpl implements MovieDataSource {
   async getMovieResponseOrderByPopularity(
     pageId: number

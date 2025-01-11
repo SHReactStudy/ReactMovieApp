@@ -6,14 +6,14 @@ import {
 } from "../../adapters/recoilStates/MovieListState";
 import Carousel from "./../components/Carousel";
 import { MovieGameInfo } from "../../domain/model/movie/MovieGameInfo";
-import { MovieDataSourceImpl } from "../../data/datasourceImpl/MovieDataSourceImpl";
-import { MovieRepositoryImpl } from "../../data/repositoryImpl/MovieRepositoryImpl";
 import { GetPopularMovieGameInfoUseCase } from "../../domain/usecases/GetPopularMovieGameInfoUseCase";
+import container from "../../di/Container";
+import USECASE_TYPEPS from "../../di/UsecaseIdentifier";
 
-// TODO : 의존성 주입으로 인스턴스 생성하는 코드 제거
-const movieDataSource = new MovieDataSourceImpl();
-const movieRepository = new MovieRepositoryImpl(movieDataSource);
-const useCase = new GetPopularMovieGameInfoUseCase(movieRepository);
+const getPopularMovieGameInfoUseCase =
+  container.get<GetPopularMovieGameInfoUseCase>(
+    USECASE_TYPEPS.GetPopularMovieGameInfo
+  );
 
 const MovieGame = () => {
   const [loadingCnt, setLoading] = useState(0);
@@ -33,7 +33,12 @@ const MovieGame = () => {
     setLoading(loadingCnt + 1);
     setMovieList([
       ...movieList,
-      ...shuffleArray(await useCase.execute(page.current, movieList.length)),
+      ...shuffleArray(
+        await getPopularMovieGameInfoUseCase.execute(
+          page.current,
+          movieList.length
+        )
+      ),
     ]);
     setLoading(loadingCnt - 1);
   };

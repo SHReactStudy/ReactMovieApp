@@ -2,17 +2,13 @@ import { useNavigate } from "react-router-dom";
 
 import userState from "../../adapters/recoilStates//UserState";
 import { useRecoilState } from "recoil";
-import { UserDataSourceImpl } from "../../data/datasourceImpl/UserDataSourceImpl";
-import { UserRepositoryImpl } from "../../data/repositoryImpl/UserRepositoryImpl";
-import { GoogleSignInDataSourceImpl } from "../../data/datasourceImpl/GoogleSignInDataSourceImpl";
-import { GoogleSignInRepositoryImpl } from "../../data/repositoryImpl/GoogleSignInRepositoryImpl";
 import { GoogleSignInUseCase } from "../../domain/usecases/GoogleSignInUseCase";
+import container from "../../di/Container";
+import USECASE_TYPEPS from "../../di/UsecaseIdentifier";
 
-const userDataSource = new UserDataSourceImpl();
-const signInDataSource = new GoogleSignInDataSourceImpl();
-const userRepository = new UserRepositoryImpl(userDataSource);
-const signInRepository = new GoogleSignInRepositoryImpl(signInDataSource);
-const signInUseCase = new GoogleSignInUseCase(userRepository, signInRepository);
+const signInUseCase = container.get<GoogleSignInUseCase>(
+  USECASE_TYPEPS.GoogleSignIn
+);
 
 function Main() {
   const navigate = useNavigate();

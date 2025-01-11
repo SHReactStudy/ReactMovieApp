@@ -1,10 +1,15 @@
-import { MovieRepository } from "../repository/MovieRepository";
+import type { MovieRepository } from "../repository/MovieRepository";
 import { MovieGameInfo } from "../model/movie/MovieGameInfo";
+import { inject, injectable } from "inversify";
+import REPOSITORY_TYPEPS from "../../di/RepositoryIdentifier";
 
+@injectable()
 export class GetPopularMovieGameInfoUseCase {
-  movieRepository: MovieRepository;
+  private movieRepository: MovieRepository;
 
-  constructor(movieRepository: MovieRepository) {
+  public constructor(
+    @inject(REPOSITORY_TYPEPS.Movie) movieRepository: MovieRepository
+  ) {
     this.movieRepository = movieRepository;
   }
 

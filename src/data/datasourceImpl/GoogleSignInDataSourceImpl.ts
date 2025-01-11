@@ -3,9 +3,11 @@ import UserEntity from "../entities/UserEntity";
 import { GoogleSignInDataSource } from "../datasource/GoogleSignInDataSource";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import auth from "../firebase/FirebaseAuth";
+import { injectable } from "inversify";
 
+@injectable()
 export class GoogleSignInDataSourceImpl implements GoogleSignInDataSource {
-  provider = new GoogleAuthProvider();
+  private provider = new GoogleAuthProvider();
 
   async authenticateWithGoogle(): Promise<DataResult<UserEntity>> {
     try {

@@ -1,12 +1,17 @@
+import { inject, injectable } from "inversify";
 import User from "../../domain/model/user/User";
 import { GoogleSignInRepository } from "../../domain/repository/GoogleSignInRepository";
 import Result from "../../domain/Result";
-import { GoogleSignInDataSource } from "../datasource/GoogleSignInDataSource";
+import type { GoogleSignInDataSource } from "../datasource/GoogleSignInDataSource";
+import DATASOURCE_TYPES from "../../di/DataSourceIdentifier";
 
+@injectable()
 export class GoogleSignInRepositoryImpl implements GoogleSignInRepository {
-  dataSource: GoogleSignInDataSource;
+  private dataSource: GoogleSignInDataSource;
 
-  constructor(dataSource: GoogleSignInDataSource) {
+  public constructor(
+    @inject(DATASOURCE_TYPES.GoogleSignIn) dataSource: GoogleSignInDataSource
+  ) {
     this.dataSource = dataSource;
   }
 
