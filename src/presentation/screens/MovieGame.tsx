@@ -6,7 +6,7 @@ import {
 } from "../../adapters/recoilStates/MovieListState";
 import Carousel from "./../components/Carousel";
 import { MovieGameInfo } from "../../domain/model/movie/MovieGameInfo";
-import { useDI } from "../../di/useDI";
+import { useDI } from "../../adapters/hooks/useDI";
 
 const MovieGame = () => {
   const [loadingCnt, setLoading] = useState(0);

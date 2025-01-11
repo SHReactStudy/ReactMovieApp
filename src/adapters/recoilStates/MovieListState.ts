@@ -1,7 +1,7 @@
 import { atom } from "recoil";
-import Movie from "../../domain/model/movie/MovieGameInfo";
+import { MovieGameInfo } from "../../domain/model/movie/MovieGameInfo";
 
-const movieListState = atom<Movie[]>({
+const movieListState = atom<MovieGameInfo[]>({
   key: "movieListState",
   default: [],
 });

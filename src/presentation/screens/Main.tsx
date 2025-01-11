@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import userState from "../../adapters/recoilStates//UserState";
 import { useRecoilState } from "recoil";
-import { useDI } from "../../di/useDI";
+import { useDI } from "../../adapters/hooks/useDI";
 
 function Main() {
   const navigate = useNavigate();

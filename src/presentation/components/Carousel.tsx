@@ -5,11 +5,11 @@ import {
   indexState,
   movieListState,
 } from "../../adapters/recoilStates/MovieListState";
-import Movie from "../../domain/model/movie/MovieGameInfo";
+import { MovieGameInfo } from "../../domain/model/movie/MovieGameInfo";
 
 const Carousel: React.FC = () => {
   const [index, setIndex] = useRecoilState(indexState);
-  const items = useRecoilValue<Movie[]>(movieListState);
+  const items = useRecoilValue<MovieGameInfo[]>(movieListState);
 
   const onRightClick = () => {
     console.log(items);
