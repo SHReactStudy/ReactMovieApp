@@ -1,8 +1,12 @@
-import { checkSignUp } from "../../domain/repository/UserRepository";
 import { useState } from "react";
 
 import { useSetRecoilState } from "recoil";
 import userState from "../../adapters/recoilStates/UserState";
+import { UserRepositoryImpl } from "../../data/repositoryImpl/UserRepositoryImpl";
+import { UserDataSourceImpl } from "../../data/datasourceImpl/UserDataSourceImpl";
+
+const userDatasource = new UserDataSourceImpl();
+const userRepository = new UserRepositoryImpl(userDatasource);
 
 function Test() {
   const [id, setId] = useState("");
@@ -12,10 +16,11 @@ function Test() {
   const setUser = useSetRecoilState(userState);
 
   const generateUser = () => {
-    checkSignUp({
+    userRepository.signIn({
       id: id,
       nickname: nickname,
       email: email,
+      platform: "etc",
     });
   };
 
@@ -24,6 +29,7 @@ function Test() {
       id,
       nickname,
       email,
+      platform: "etc",
     });
     alert("Recoil 상태 갱신 완료");
   };

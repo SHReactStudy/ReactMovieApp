@@ -2,9 +2,17 @@ import { useNavigate } from "react-router-dom";
 
 import userState from "../../adapters/recoilStates//UserState";
 import { useRecoilState } from "recoil";
+import { UserDataSourceImpl } from "../../data/datasourceImpl/UserDataSourceImpl";
+import { UserRepositoryImpl } from "../../data/repositoryImpl/UserRepositoryImpl";
+import { GoogleSignInDataSourceImpl } from "../../data/datasourceImpl/GoogleSignInDataSourceImpl";
+import { GoogleSignInRepositoryImpl } from "../../data/repositoryImpl/GoogleSignInRepositoryImpl";
+import { GoogleSignInUseCase } from "../../domain/usecases/GoogleSignInUseCase";
 
-import { checkSignUp } from "../../domain/repository/UserRepository";
-import { googleLogin } from "../../domain/repository/SignInRepository";
+const userDataSource = new UserDataSourceImpl();
+const signInDataSource = new GoogleSignInDataSourceImpl();
+const userRepository = new UserRepositoryImpl(userDataSource);
+const signInRepository = new GoogleSignInRepositoryImpl(signInDataSource);
+const signInUseCase = new GoogleSignInUseCase(userRepository, signInRepository);
 
 function Main() {
   const navigate = useNavigate();
@@ -28,9 +36,9 @@ function Main() {
   };
 
   const onGoogleLogin = async () => {
-    const result = await googleLogin();
-    const user = await checkSignUp(result);
-    setUserInfo(user);
+    const result = await signInUseCase.execute();
+    if (result.isSuccessful) setUserInfo(result.value!);
+    else alert(result.message!);
   };
 
   return (

@@ -15,7 +15,9 @@ export class MovieRepositoryImpl implements MovieRepository {
     page: number,
     baseIndex: number
   ): Promise<MovieGameInfo[]> {
-    const result = await this.dataSource.getMovieResponseOrderedByPopular(page);
+    const result = await this.dataSource.getMovieResponseOrderByPopularity(
+      page
+    );
     if (result.isSuccessful)
       return result.value!.results.map((item: MovieEntity, index: number) =>
         mapMovieResponseToMovie(item, baseIndex + index)

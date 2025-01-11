@@ -1,9 +1,9 @@
 export default class DataResult<T> {
   public isSuccessful: boolean;
   public value?: T;
-  public error?: string;
+  public error?: Error;
 
-  private constructor(isSuccessful: boolean, value?: T, error?: string) {
+  private constructor(isSuccessful: boolean, value?: T, error?: Error) {
     this.isSuccessful = isSuccessful;
     this.value = value;
     this.error = error;
@@ -13,7 +13,11 @@ export default class DataResult<T> {
     return new DataResult<T>(true, value);
   }
 
-  static Failure<T>(error: string): DataResult<T> {
-    return new DataResult<T>(false, undefined, error);
+  static Failure<T>(error: unknown): DataResult<T> {
+    return new DataResult<T>(
+      false,
+      undefined,
+      error instanceof Error ? error : Error(String(error))
+    );
   }
 }

@@ -1,4 +1,4 @@
-export default interface User {
+export default interface UserEntity {
   nickname: string;
   id: string;
   platform: string;

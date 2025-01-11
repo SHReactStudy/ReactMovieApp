@@ -31,9 +31,7 @@ export class MovieDataSourceImpl implements MovieDataSource {
       );
       return DataResult.Success(response.data);
     } catch (error) {
-      return DataResult.Failure(
-        error instanceof Error ? error.message : String(error)
-      );
+      return DataResult.Failure(error);
     }
   }
 }
